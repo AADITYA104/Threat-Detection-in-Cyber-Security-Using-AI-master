@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-Time AI Threat Detection System - Techfest Demo">
+    <title>CyberShield AI - Real-Time Threat Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <!-- Background Elements -->
+    <div class="background-gradient"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <circle cx="12" cy="16" r="1" fill="currentColor" />
+                    </svg>
+                </div>
+                <span class="brand-text">CyberShield<span class="brand-ai">AI</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#simulation" class="nav-link">Simulation</a></li>
+                <li><a href="#detect" class="nav-link">Detect</a></li>
+                <li><a href="#statistics" class="nav-link">Statistics</a></li>
+            </ul>
+            <div class="status-indicator">
+                <span class="status-dot pulsing"></span>
+                <span class="status-text">Real-Time Detection</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">⚡ AI-Powered • Real-Time • High Performance</div>
+                <h1 class="hero-title">
+                    Cyber Threat Detection<br>
+                    <span class="gradient-text">In Milliseconds</span>
+                </h1>
+                <p class="hero-description">
+                    Advanced machine learning model analyzing network traffic patterns to detect and classify cyber
+                    threats instantly with industry-leading accuracy.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('detect')">
+                        <span>Start Detection</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('statistics')">
+                        <span>View Analytics</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalSamples">0</div>
+                        <div class="stat-label">Samples Analyzed</div>
+                    </div>
+                </div>
+
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                stroke="currentColor" stroke-width="2" />
+                            <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="avgTime">--</div>
+                        <div class="stat-label">Avg Processing Time</div>
+                    </div>
+                </div>
+
+                <div class="stat-card glass">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalPredictions">0</div>
+                        <div class="stat-label">Total Predictions</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="system-status-card glass">
+                <h3>🖥️ System Status</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label">API Status</span>
+                        <span class="status-badge" id="apiStatus">Checking...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">Model Status</span>
+                        <span class="status-badge" id="modelStatus">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simulation Section -->
+    <section id="simulation" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Network Activity Simulation</h2>
+                <p class="section-subtitle">Real-time dual-network monitoring: Secure Zone vs. External Zone</p>
+            </div>
+
+            <div class="simulation-grid">
+                <!-- Network A: Secure Zone -->
+                <div class="network-card glass" id="networkACard">
+                    <div class="network-header">
+                        <div class="network-title">
+                            <span class="network-icon safe">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <h3>Network A (Secure Zone)</h3>
+                        </div>
+                        <span class="status-badge success" id="statusA">SECURE</span>
+                    </div>
+
+                    <div class="network-controls">
+                        <button class="btn btn-sm btn-primary" id="btnStartA" onclick="toggleSimulation('A', 'benign')">
+                            ▶ Follow Normal Traffic
+                        </button>
+                    </div>
+
+                    <div class="network-monitor">
+                        <div class="monitor-stats">
+                            <div class="stat">
+                                <span class="label">Traffic</span>
+                                <span class="value" id="trafficA">0 p/s</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Threats</span>
+                                <span class="value safe" id="threatsA">0</span>
+                            </div>
+                        </div>
+                        <div class="monitor-log" id="logA">
+                            <div class="log-entry system">System initialized. Waiting for traffic...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network B: Attack Zone -->
+                <div class="network-card glass" id="networkBCard">
+                    <div class="network-header">
+                        <div class="network-title">
+                            <span class="network-icon danger">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <h3>Network B (External Zone)</h3>
+                        </div>
+                        <span class="status-badge neutral" id="statusB">IDLE</span>
+                    </div>
+
+                    <div class="network-controls">
+                        <button class="btn btn-sm btn-danger" id="btnStartB" onclick="toggleSimulation('B', 'attack')">
+                            ⚠ Simulate DDoS Attack
+                        </button>
+                    </div>
+
+                    <div class="network-monitor">
+                        <div class="monitor-stats">
+                            <div class="stat">
+                                <span class="label">Traffic</span>
+                                <span class="value" id="trafficB">0 p/s</span>
+                            </div>
+                            <div class="stat">
+                                <span class="label">Threats</span>
+                                <span class="value danger" id="threatsB">0</span>
+                            </div>
+                        </div>
+                        <div class="monitor-log" id="logB">
+                            <div class="log-entry system">System initialized. Waiting for traffic...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threat Detection Section -->
+    <section id="detect" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Real-Time Threat Detection</h2>
+                <p class="section-subtitle">Upload network traffic data for instant AI-powered analysis</p>
+            </div>
+
+            <div class="detection-container">
+                <!-- Upload Area -->
+                <div class="upload-section">
+                    <div class="upload-area glass" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M17 8L12 3L7 8" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12 3V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3>Upload Network Traffic CSV</h3>
+                            <p>Drag and drop your file here or click to browse</p>
+                            <input type="file" id="fileInput" accept=".csv" hidden>
+                            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                <span>Choose File</span>
+                            </button>
+                            <p class="upload-hint">Supports CSV files with network traffic data</p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Predictions -->
+                    <div class="recent-section glass">
+                        <h3>📋 Recent Predictions</h3>
+                        <div id="recentPredictions" class="recent-list">
+                            <p class="empty-state">No predictions yet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div class="results-section">
+                    <div class="results-area glass" id="resultsArea" style="display: none;">
+                        <div class="results-header">
+                            <h3>Detection Results</h3>
+                            <button class="btn-icon" onclick="clearResults()">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="detectionResults"></div>
+                    </div>
+
+                    <!-- Threat Chart -->
+                    <div class="chart-section glass">
+                        <h3>📊 Threat Distribution</h3>
+                        <canvas id="threatChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Analytics Dashboard</h2>
+                <p class="section-subtitle">Comprehensive threat detection statistics</p>
+            </div>
+
+            <div class="analytics-grid">
+                <div class="chart-card glass">
+                    <h3>Overall Threat Distribution</h3>
+                    <canvas id="statsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L3 7V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V7L12 2Z"
+                                stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <span class="brand-text">CyberShield<span class="brand-ai">AI</span></span>
+                </div>
+                <p class="footer-text">
+                    Real-time AI-powered threat detection system. Built for speed, accuracy, and reliability.
+                </p>
+                <p class="footer-copyright">
+                    © 2024 CyberShield AI • Techfest Demo Project
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p id="loadingText">Processing...</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
